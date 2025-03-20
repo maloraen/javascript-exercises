@@ -1,17 +1,16 @@
 const sumAll = function(x, y) {
-    let sum = 0;
-
-    if ((x < 0) || (y < 0) || !Number.isInteger(x) || !Number.isInteger(y)) { // if x and/or y is negative or not a number or integer
+    if ((x < 0) || (y < 0) ||                           // if x and/or y is negative
+        !Number.isInteger(x) || !Number.isInteger(y)) { // or not a number or integer
         return "ERROR";
-    } else if (x < y) { // if the second parameter is the larger one
-        for (i = x; i <= y; i++) {
-            sum += i;
-        }
-    } else if (y < x) { // if the first parameter is the larger one
-        for (i = y; i <= x; i++) {
-            sum += i;
-        }
     } 
+    if (x > y) { // if larger number is first
+        [x, y] = [y, x]; // swap numbers
+    }
+
+    let sum = 0;
+    for (i = x; i<= y; i++) { // iterate through range, including given values
+        sum += i;
+    }
 
     return sum;
 };
